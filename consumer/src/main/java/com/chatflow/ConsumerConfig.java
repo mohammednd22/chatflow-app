@@ -61,7 +61,7 @@ public class ConsumerConfig {
     }
 
     /**
-     * Get queue name for a specific room
+     * Get a queue name for a specific room
      */
     public static String getRoomQueueName(int roomId) {
         return ROOM_QUEUE_PREFIX + roomId;

@@ -30,7 +30,7 @@ public class ConsumerApplication {
         this.executorService = Executors.newFixedThreadPool(consumersPerRoom * roomCount);
         this.redisPublisher = new RedisPublisherOptimized();
 
-        // Initialize database if persistence enabled
+        // Initialize a database if persistence enabled
         if (persistenceEnabled) {
             try {
                 System.out.println("\nInitializing database...");
@@ -45,7 +45,7 @@ public class ConsumerApplication {
         } else {
             this.repository = null;
             this.databaseWriter = null;
-            System.out.println("⚠ Running WITHOUT database persistence");
+            System.out.println("Running WITHOUT database persistence");
         }
 
         this.processor = new MessageProcessor(redisPublisher, databaseWriter);

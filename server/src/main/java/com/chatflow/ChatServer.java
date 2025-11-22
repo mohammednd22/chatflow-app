@@ -230,8 +230,8 @@ public class ChatServer extends WebSocketServer {
             try {
                 DatabaseConfig.initialize();
                 MetricsAPI metricsAPI = new MetricsAPI();
-                metricsAPI.start(8082); // Different port from health check
-                System.out.println("Metrics API available at: http://localhost:8080/api/metrics");
+                metricsAPI.start(8082);
+                System.out.println("Metrics API available at: http://localhost:8082/api/metrics");
             } catch (Exception e) {
                 System.err.println("Failed to start metrics API: " + e.getMessage());
                 // Continue without metrics - not critical

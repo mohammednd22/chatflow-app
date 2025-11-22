@@ -75,7 +75,7 @@ public class BatchDatabaseWriter {
             writerExecutor.submit(() -> runWriter(threadId));
         }
 
-        // Start periodic flush scheduler
+        // Start a periodic flush scheduler
         flushScheduler.scheduleAtFixedRate(
                 this::logStats,
                 10, 10, TimeUnit.SECONDS
@@ -113,7 +113,7 @@ public class BatchDatabaseWriter {
 
         while (running.get() || !writeQueue.isEmpty()) {
             try {
-                // Collect messages into batch
+                // Collect messages into a batch
                 QueuedMessage msg = writeQueue.poll(100, TimeUnit.MILLISECONDS);
 
                 if (msg != null) {
@@ -148,7 +148,7 @@ public class BatchDatabaseWriter {
     }
 
     /**
-     * Flush a batch to database
+     * Flush a batch to the database
      */
     private void flushBatch(List<QueuedMessage> batch, int threadId) {
         if (batch.isEmpty()) {
@@ -164,7 +164,7 @@ public class BatchDatabaseWriter {
             long duration = (System.nanoTime() - startTime) / 1_000_000; // ms
 
             if (duration > 1000) { // Log slow batches
-                System.out.printf("⚠ Slow batch [Thread %d]: %d messages in %d ms%n",
+                System.out.printf("Slow batch [Thread %d]: %d messages in %d ms%n",
                         threadId, batch.size(), duration);
             }
 

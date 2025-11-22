@@ -56,7 +56,7 @@ public class ChatClientWorker implements Runnable {
                     continue;
                 }
 
-                // ADD: Slow down if queue has too many messages
+                // Slow down if queue has too many messages
                 int queueSize = messageQueue.size();
                 if (queueSize > 5000) {
                     Thread.sleep(10); // Slow down client when backed up

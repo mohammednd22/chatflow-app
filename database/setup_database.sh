@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# ChatFlow Database Setup Script
-# Sets up PostgreSQL database with optimized configuration
 
 set -e
 
@@ -27,7 +25,7 @@ echo ""
 # Check if PostgreSQL is running
 echo "1. Checking PostgreSQL connection..."
 if ! pg_isready -h "$DB_HOST" -p "$DB_PORT" -U "$DB_USER" > /dev/null 2>&1; then
-    echo "❌ PostgreSQL is not running or not accessible"
+    echo "PostgreSQL is not running or not accessible"
     echo "   Please start PostgreSQL and try again"
     exit 1
 fi

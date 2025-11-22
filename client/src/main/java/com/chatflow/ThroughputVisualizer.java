@@ -19,7 +19,6 @@ public class ThroughputVisualizer {
 
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
-        // Sort by time bucket
         TreeMap<Long, Integer> sortedData = new TreeMap<>(throughputData);
 
         for (Map.Entry<Long, Integer> entry : sortedData.entrySet()) {

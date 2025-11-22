@@ -23,9 +23,9 @@ public class MessageProcessor {
         this.persistenceEnabled = (databaseWriter != null);
 
         if (persistenceEnabled) {
-            System.out.println("✓ Message processor initialized WITH database persistence");
+            System.out.println("Message processor initialized WITH database persistence");
         } else {
-            System.out.println("✓ Message processor initialized WITHOUT database persistence");
+            System.out.println("Message processor initialized WITHOUT database persistence");
         }
     }
 
@@ -37,9 +37,6 @@ public class MessageProcessor {
             ChatMessage chatMessage = queuedMessage.getChatMessage();
             String roomId = queuedMessage.getRoomId();
 
-            // ========================================
-            // 1. BROADCAST to room via Redis (real-time)
-            // ========================================
             BroadcastMessage broadcast = new BroadcastMessage(
                     chatMessage.getUserId(),
                     chatMessage.getUsername(),
@@ -58,9 +55,6 @@ public class MessageProcessor {
                 return false;
             }
 
-            // ========================================
-            // 2. PERSIST to database (async, non-blocking)
-            // ========================================
             if (persistenceEnabled) {
                 boolean queued = databaseWriter.queueMessage(queuedMessage);
                 if (!queued) {
@@ -68,9 +62,6 @@ public class MessageProcessor {
                 }
             }
 
-            // ========================================
-            // 3. Update metrics
-            // ========================================
             long processingTime = System.nanoTime() - startTime;
             totalProcessingTime.addAndGet(processingTime);
             long count = processedCount.incrementAndGet();

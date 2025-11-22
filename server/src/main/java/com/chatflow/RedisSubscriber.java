@@ -76,7 +76,6 @@ public class RedisSubscriber {
                     }
 
                     if (broadcastCount > 0) {
-                        // Minimal logging for performance
                         // System.out.println("Broadcasted to " + broadcastCount + " clients in room " + roomId);
                     }
                 }

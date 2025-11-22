@@ -34,7 +34,7 @@ public class ConnectionPool {
         PooledConnection conn = pool.poll();
 
         if (conn == null || !conn.isConnected()) {
-            // Create new connection
+            // Create a new connection
             conn = createConnection(roomId);
         }
 

@@ -98,7 +98,6 @@ public class MessageGenerator implements Runnable {
         String messageType = determineMessageType();
         String timestamp = Instant.now().toString();
 
-        // Adjust message text based on type
         if ("JOIN".equals(messageType)) {
             messageText = username + " has joined the chat";
         } else if ("LEAVE".equals(messageType)) {

@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Repository for message persistence and analytics queries
- * Optimized for high-throughput batch writes
+ * Optimized for high throughput batch writes
  */
 public class MessageRepository {
 

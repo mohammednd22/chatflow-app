@@ -58,7 +58,7 @@ public class RabbitMQConfig {
         channel.queueDeclare(DLQ_QUEUE, true, false, false, null);
         channel.queueBind(DLQ_QUEUE, DLX_EXCHANGE, "dlq");
 
-        // Declare main exchange (direct - we'll use roomId as routing key)
+        // Declare main exchange (use roomId as routing key)
         channel.exchangeDeclare(CHAT_EXCHANGE, "direct", true);
 
         System.out.println("RabbitMQ exchanges and DLQ configured");
@@ -92,7 +92,6 @@ public class RabbitMQConfig {
 
     public static Channel createChannel() throws IOException {
         Channel channel = connection.createChannel();
-        // Don't set QoS here - let each use case configure it
         return channel;
     }
 

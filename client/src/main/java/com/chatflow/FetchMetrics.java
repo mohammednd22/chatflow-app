@@ -13,6 +13,6 @@ public class FetchMetrics {
 
         MetricsFetcher.fetchAndPrintMetrics();
 
-        System.out.println("\nDone! Screenshot this output for your report.");
+        System.out.println("\nDone!");
     }
 }
